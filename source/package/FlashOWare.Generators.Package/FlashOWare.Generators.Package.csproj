@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput;_AddLibrariesToOutput</TargetsForTfmSpecificContentInPackage>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>FlashOWare.Generators</PackageId>
+    <Title>FlashOWare.Generators</Title>
+    <Authors>FlashOWare;Flash0ver</Authors>
+    <Company>FlashOWare</Company>
+    <Product>FlashOWare.Generators</Product>
+    <Description>General-purpose C# source code generators.</Description>
+    <Copyright>© FlashOWare</Copyright>
+    <PackageProjectUrl>https://github.com/FlashOWare/FlashOWare.Generators</PackageProjectUrl>
+    <PackageIcon>Icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/FlashOWare/FlashOWare.Generators.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>FlashOWare;f[0];F0;Generators;Roslyn;CodeAnalysis;CSharp</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(VersionSuffix)' != '' ">
+    <PackageIconUrl>https://raw.githubusercontent.com/FlashOWare/FlashOWare.Generators/main/resources/FlashOWare.Generators-Prerelease.png</PackageIconUrl>
+    <PackageReleaseNotes>https://github.com/FlashOWare/FlashOWare.Generators/blob/main/docs/CHANGELOG-Prerelease.md</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(VersionSuffix)' == '' ">
+    <PackageIconUrl>https://raw.githubusercontent.com/FlashOWare/FlashOWare.Generators/main/resources/FlashOWare.Generators.png</PackageIconUrl>
+    <PackageReleaseNotes>https://github.com/FlashOWare/FlashOWare.Generators/blob/main/docs/CHANGELOG.md</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\gen\FlashOWare.Generators\FlashOWare.Generators.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\..\lib\FlashOWare.Generators.Attributes\FlashOWare.Generators.Attributes.csproj" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="build\*.props" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="build" Visible="true" />
+    <None Include="build\*.targets" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="build" Visible="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\resources\README.md" Pack="true" PackagePath="README.md" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(VersionSuffix)' != '' ">
+    <None Include="..\..\..\resources\FlashOWare.Generators-Prerelease.png" Pack="true" PackagePath="Icon.png" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(VersionSuffix)' == '' ">
+    <None Include="..\..\..\resources\FlashOWare.Generators.png" Pack="true" PackagePath="Icon.png" Visible="false" />
+  </ItemGroup>
+
+  <Target Name="_AddAnalyzersToOutput">
+    <ItemGroup>
+      <TfmSpecificPackageFile Include="$(OutputPath)\FlashOWare.Generators.dll" PackagePath="analyzers/dotnet/cs" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="_AddLibrariesToOutput">
+    <ItemGroup>
+      <TfmSpecificPackageFile Include="$(OutputPath)\FlashOWare.Generators.Attributes.dll" PackagePath="lib/netstandard2.0" />
+    </ItemGroup>
+  </Target>
+
+</Project>

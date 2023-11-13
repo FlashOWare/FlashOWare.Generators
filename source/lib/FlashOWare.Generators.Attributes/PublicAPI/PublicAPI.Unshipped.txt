@@ -1,0 +1,2 @@
+FlashOWare.Generators.MyAttribute
+FlashOWare.Generators.MyAttribute.MyAttribute() -> void

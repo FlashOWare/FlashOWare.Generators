@@ -1,5 +1,6 @@
-using FlashOWare.Examples;
+using FlashOWare.Enumerations;
 
 Console.WriteLine("Hello, World!");
+Console.WriteLine();
 
-MyExample.Write();
+EnumerationExamples.Run();

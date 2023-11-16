@@ -1,1 +1,4 @@
 is_global = true
+
+# CA1064: Exceptions should be public
+dotnet_diagnostic.CA1064.severity = none

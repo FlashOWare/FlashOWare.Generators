@@ -2,3 +2,6 @@ is_global = true
 
 # CA1707: Identifiers should not contain underscores
 dotnet_diagnostic.CA1707.severity = none
+
+# IDE0022: Use expression body for method
+dotnet_diagnostic.IDE0022.severity = none

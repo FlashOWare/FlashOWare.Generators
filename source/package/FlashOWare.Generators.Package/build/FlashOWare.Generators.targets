@@ -1,2 +1,7 @@
 <Project>
+
+  <PropertyGroup>
+    <InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);FlashOWare.Generated</InterceptorsPreviewNamespaces>
+  </PropertyGroup>
+
 </Project>

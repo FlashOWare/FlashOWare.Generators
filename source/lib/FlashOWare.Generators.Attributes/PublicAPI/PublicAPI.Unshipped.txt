@@ -1,2 +1,4 @@
-FlashOWare.Generators.MyAttribute
-FlashOWare.Generators.MyAttribute.MyAttribute() -> void
+FlashOWare.Generators.GeneratedEnumGetNameAttribute<TEnum>
+FlashOWare.Generators.GeneratedEnumGetNameAttribute<TEnum>.GeneratedEnumGetNameAttribute() -> void
+FlashOWare.Generators.GeneratedEnumIsDefinedAttribute<TEnum>
+FlashOWare.Generators.GeneratedEnumIsDefinedAttribute<TEnum>.GeneratedEnumIsDefinedAttribute() -> void

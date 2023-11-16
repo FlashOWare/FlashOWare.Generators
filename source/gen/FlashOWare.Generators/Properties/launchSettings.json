@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FlashOWare.Generators": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\..\\examples\\FlashOWare.Generators.Example\\FlashOWare.Generators.Example.csproj"
+    }
+  }
+}

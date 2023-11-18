@@ -102,26 +102,26 @@ public sealed class EnumInterceptorGenerator : IIncrementalGenerator
 			document.WriteLine('{');
 			document.Indent++;
 
-			IEnumerable<IGrouping<string, EnumMethodInvocation>> group = source.GroupBy(static value => value.Name);
+			IEnumerable<IGrouping<string, EnumMethodInvocation>> group = source.GroupBy(static value => $"{value.Name}:{value.Enum.Name}");
 
 			foreach (var invocations in group)
 			{
-				int index = 0;
-
-				foreach (var invocation in invocations)
+				var locations = invocations.Select(static invocation => invocation.Location);
+				foreach (var location in locations)
 				{
-					document.WriteLine($"""[InterceptsLocation(@"{invocation.Location.FilePath}", {invocation.Location.Line}, {invocation.Location.Character})]""");
+					document.WriteLine($"""[InterceptsLocation(@"{location.FilePath}", {location.Line}, {location.Character})]""");
+				}
 
-					if (invocation.Name == Methods.GetName)
-					{
-						document.WriteLine($"internal static string? {Methods.GetName}{index++}({invocation.Enum.Name} value)");
-						EnumerationWriter.WriteGetNameMethodBody(document, invocation.Enum);
-					}
-					else if (invocation.Name == Methods.IsDefined)
-					{
-						document.WriteLine($"internal static bool {Methods.IsDefined}{index++}({invocation.Enum.Name} value)");
-						EnumerationWriter.WriteIsDefinedMethodBody(document, invocation.Enum);
-					}
+				var invocation = invocations.First();
+				if (invocation.Name == Methods.GetName)
+				{
+					document.WriteLine($"internal static string? {Methods.GetName}({invocation.Enum.Name} value)");
+					EnumerationWriter.WriteGetNameMethodBody(document, invocation.Enum);
+				}
+				else if (invocation.Name == Methods.IsDefined)
+				{
+					document.WriteLine($"internal static bool {Methods.IsDefined}({invocation.Enum.Name} value)");
+					EnumerationWriter.WriteIsDefinedMethodBody(document, invocation.Enum);
 				}
 			}
 

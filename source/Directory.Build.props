@@ -14,7 +14,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <!--<ArtifactsPath>$(MSBuildThisFileDirectory)artifacts</ArtifactsPath>-->
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <ArtifactsPath>$(MSBuildThisFileDirectory)../artifacts</ArtifactsPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">

@@ -18,7 +18,7 @@ public sealed class EnumInterceptorGenerator : IIncrementalGenerator
 	public void Initialize(IncrementalGeneratorInitializationContext context)
 	{
 		var source = context.SyntaxProvider.CreateSyntaxProvider(
-			static bool (SyntaxNode node, CancellationToken CancellationToken) =>
+			static bool (SyntaxNode node, CancellationToken cancellationToken) =>
 			{
 				return node is InvocationExpressionSyntax invocation
 					&& invocation.Expression is MemberAccessExpressionSyntax

@@ -4,6 +4,9 @@ Prerelease Changelog
 [goto Release_Changelog;](./CHANGELOG.md)
 
 ## [vNext]
+### Generators
+- **Changed** `Enum-Interceptor-Generator` to emit each `System.Enum` specialization only once, but with one or more Interceptor-Attributes instead.
+
 ### Package
 - **Added** documentation to `README.md`.
 

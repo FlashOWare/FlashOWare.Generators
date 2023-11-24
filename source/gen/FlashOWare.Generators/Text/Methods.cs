@@ -2,6 +2,6 @@ namespace FlashOWare.Text;
 
 internal static class Methods
 {
-	internal static string GetName { get; } = "GetName";
-	internal static string IsDefined { get; } = "IsDefined";
+	internal const string GetName  = nameof(Enum.GetName);
+	internal const string IsDefined = nameof(Enum.IsDefined);
 }

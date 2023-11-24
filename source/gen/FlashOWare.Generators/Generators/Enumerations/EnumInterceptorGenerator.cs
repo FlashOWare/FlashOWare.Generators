@@ -8,7 +8,7 @@ using FlashOWare.CodeAnalysis;
 using FlashOWare.Text;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-using EnumInvocationGroup = (string methodName, string enumName);
+using EnumInvocationGroup = (string MethodName, string EnumName);
 
 namespace FlashOWare.Generators.Enumerations;
 

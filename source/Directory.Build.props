@@ -26,4 +26,8 @@
     <WarningsNotAsErrors>$(WarningsNotAsErrors);CS0612;CS0618;CS1030</WarningsNotAsErrors>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1" PrivateAssets="All"/>
+  </ItemGroup>
+
 </Project>

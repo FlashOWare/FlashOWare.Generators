@@ -66,9 +66,9 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore ${{ env.SLN_PATH }} --configfile nuget.config --no-cache
       - name: Build
-        run: dotnet build ${{ env.SLN_PATH }} --configuration Release --no-restore
+        run: dotnet build ${{ env.SLN_PATH }} --configuration Debug --no-restore
       - name: Test
-        run: dotnet test ${{ env.SLN_PATH }} --configuration Release --no-build --collect:"XPlat Code Coverage" --logger trx --results-directory ${{ env.COVERAGE_OUTPUT_PATH }}
+        run: dotnet test ${{ env.SLN_PATH }} --configuration Debug --no-build --collect:"XPlat Code Coverage" --logger trx --results-directory ${{ env.COVERAGE_OUTPUT_PATH }}
       - name: Code Coverage Summary Report
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:

@@ -4,32 +4,72 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{68723E45-536E-4638-9751-87CCA07814DA}"
+	ProjectSection(SolutionItems) = preProject
+		examples\Directory.Build.props = examples\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashOWare.Generators.Example", "examples\FlashOWare.Generators.Example\FlashOWare.Generators.Example.csproj", "{F57E367D-E386-4F5B-8E3B-61FB26D7E441}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gen", "gen", "{3FA455A7-9AB9-43AA-AE32-20F50F4BCF5C}"
+	ProjectSection(SolutionItems) = preProject
+		gen\Directory.Build.props = gen\Directory.Build.props
+		gen\stryker-config.yaml = gen\stryker-config.yaml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashOWare.Generators", "gen\FlashOWare.Generators\FlashOWare.Generators.csproj", "{8B7C094D-BD6C-4378-B9B1-C032B862E5D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{4E4E7766-31AB-4486-A9B9-C27DEF55A1FA}"
+	ProjectSection(SolutionItems) = preProject
+		lib\Directory.Build.props = lib\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashOWare.Generators.Attributes", "lib\FlashOWare.Generators.Attributes\FlashOWare.Generators.Attributes.csproj", "{25FEEDC6-727D-49AE-89B7-73CB7DE5D4BF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{44AC5637-7B29-48C4-BD22-A611BBEDB0E3}"
+	ProjectSection(SolutionItems) = preProject
+		package\Directory.Build.props = package\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashOWare.Generators.Package", "package\FlashOWare.Generators.Package\FlashOWare.Generators.Package.csproj", "{0C437E75-0681-4166-8ADC-525087CE444F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "perf", "perf", "{FD3F39BB-5A2F-4CB8-AA06-0DD65E161B4C}"
+	ProjectSection(SolutionItems) = preProject
+		perf\Directory.Build.props = perf\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashOWare.Generated.Benchmarks", "perf\FlashOWare.Generated.Benchmarks\FlashOWare.Generated.Benchmarks.csproj", "{169547E5-6BDA-4E0F-8D44-2F06FB4E7A0C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashOWare.Generators.Benchmarks", "perf\FlashOWare.Generators.Benchmarks\FlashOWare.Generators.Benchmarks.csproj", "{BE4DBAD4-613F-474C-93C4-248A073F5016}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CC256320-312F-49E0-B3BE-C0E5E596B8C1}"
+	ProjectSection(SolutionItems) = preProject
+		tests\Directory.Build.props = tests\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashOWare.Generated.Tests", "tests\FlashOWare.Generated.Tests\FlashOWare.Generated.Tests.csproj", "{422D58CF-5DD4-408E-8D35-48C187311FE5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashOWare.Generators.Tests", "tests\FlashOWare.Generators.Tests\FlashOWare.Generators.Tests.csproj", "{998580C9-1518-43A8-A91B-B4C3D6B25B18}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solution items", "_solution items", "{04634A03-F288-4A1B-9F81-258F23537516}"
+	ProjectSection(SolutionItems) = preProject
+		..\global.json = ..\global.json
+		..\nuget.config = ..\nuget.config
+		Version.props = Version.props
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Build.props = Directory.Build.props
+		..\.gitignore = ..\.gitignore
+		..\.gitattributes = ..\.gitattributes
+		..\.editorconfig = ..\.editorconfig
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{AB36FB60-1828-4E44-AEB5-A856ABC2DFBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{31CB57D9-89FB-4857-A0DE-738DCD87140A}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\ci.yml = ..\.github\workflows\ci.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +122,8 @@ Global
 		{BE4DBAD4-613F-474C-93C4-248A073F5016} = {FD3F39BB-5A2F-4CB8-AA06-0DD65E161B4C}
 		{422D58CF-5DD4-408E-8D35-48C187311FE5} = {CC256320-312F-49E0-B3BE-C0E5E596B8C1}
 		{998580C9-1518-43A8-A91B-B4C3D6B25B18} = {CC256320-312F-49E0-B3BE-C0E5E596B8C1}
+		{AB36FB60-1828-4E44-AEB5-A856ABC2DFBB} = {04634A03-F288-4A1B-9F81-258F23537516}
+		{31CB57D9-89FB-4857-A0DE-738DCD87140A} = {AB36FB60-1828-4E44-AEB5-A856ABC2DFBB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46EE281F-3A08-4E42-B0B0-809B895E15C0}

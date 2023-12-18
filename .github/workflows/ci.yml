@@ -51,7 +51,7 @@ jobs:
     name: Collect Code Coverage
     needs:
       - build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       COVERAGE_OUTPUT_PATH: artifacts/coverage
     steps:
@@ -91,7 +91,7 @@ jobs:
       - build
     env:
       STRYKER_OUTPUT_PATH: ${{ github.workspace }}/artifacts/stryker
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Setup Variables
         # https://stryker-mutator.io/docs/stryker-net/reporters/#markdown-summary-reporter

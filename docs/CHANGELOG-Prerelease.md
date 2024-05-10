@@ -6,10 +6,11 @@ Prerelease Changelog
 ## [vNext]
 ### Generators
 - **Changed** `Enum-Interceptor-Generator`
-  - requires _C# 12.0_ --> _C# 11.0_
-    - emits _regular constructors_ instead of _primary constructors_ for the (experimental) interceptors Attribute
-    - consolidates required language version across all Generators (_C# 11.0_)
-    - aligns with required minimum _.NET 7.0 SDK_, where the _TFM_ `net7.0` uses `11.0` as default `LangVersion`
+  - require _C# 12.0_ --> _C# 11.0_
+    - emit a _regular constructor_ instead of a _primary constructor_ for the (experimental) Interceptors Attribute
+    - consolidate required language version across all Generators (_C# 11.0_)
+    - align with required minimum _.NET 7.0 SDK_, where the _TFM_ `net7.0` uses `11.0` as default `LangVersion`
+  - suppress adding the generated document when no target Enum-Method-Invocations are found
 
 ### Package
 - **Added** documentation to `README.md`.

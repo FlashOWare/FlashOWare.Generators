@@ -80,6 +80,11 @@ public sealed class EnumInterceptorGenerator : IIncrementalGenerator
 
 		context.RegisterImplementationSourceOutput(source!, static void (SourceProductionContext context, ImmutableArray<EnumMethodInvocation> source) =>
 		{
+			if (source.IsEmpty)
+			{
+				return;
+			}
+
 			StringBuilder builder = new();
 			using StringWriter writer = new(builder, CultureInfo.InvariantCulture);
 			using IndentedTextWriter document = new(writer, "\t");

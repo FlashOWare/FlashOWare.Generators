@@ -28,8 +28,8 @@ internal sealed class CSharpIncrementalGeneratorTest<TIncrementalGenerator> : CS
 		});
 	}
 
-	public bool? CheckOverflow { get; init; }
-	public LanguageVersion LanguageVersion { get; init; } = LanguageVersion.Default;
+	public bool? CheckOverflow { get; set; }
+	public LanguageVersion LanguageVersion { get; set; } = LanguageVersion.Default;
 
 	protected override CompilationOptions CreateCompilationOptions()
 	{

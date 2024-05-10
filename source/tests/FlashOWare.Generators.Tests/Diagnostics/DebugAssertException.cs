@@ -1,6 +1,4 @@
 #if DEBUG && NETFRAMEWORK
-using System.Diagnostics.CodeAnalysis;
-
 namespace FlashOWare.Tests.Diagnostics;
 
 [SuppressMessage("Design", "CA1032:Implement standard exception constructors", Justification = "DEBUG && NETFRAMEWORK")]

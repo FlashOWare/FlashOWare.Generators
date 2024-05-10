@@ -1,4 +1,3 @@
-using FlashOWare.Tests.Text;
 using Verifier = FlashOWare.Tests.CodeAnalysis.CSharp.Testing.CSharpIncrementalGeneratorVerifier<FlashOWare.Generators.Enumerations.EnumGetNameGenerator>;
 
 namespace FlashOWare.Tests.Generators.Enumerations;

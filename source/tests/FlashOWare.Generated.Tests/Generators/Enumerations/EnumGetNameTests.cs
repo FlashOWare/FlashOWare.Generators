@@ -1,4 +1,4 @@
-namespace FlashOWare.Tests.Enumerations;
+namespace FlashOWare.Tests.Generators.Enumerations;
 
 public class EnumGetNameTests
 {

@@ -1,4 +1,4 @@
-namespace FlashOWare.Benchmarks.Enumerations;
+namespace FlashOWare.Tests.Generators.Enumerations;
 
 internal static class SystemEnum
 {

@@ -1,7 +1,7 @@
 using FlashOWare.Generators.Enumerations;
 using Microsoft.CodeAnalysis;
 
-namespace FlashOWare.Tests.Enumerations;
+namespace FlashOWare.Tests.Generators.Enumerations;
 
 public class GeneratorTests
 {

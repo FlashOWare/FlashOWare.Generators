@@ -1,7 +1,7 @@
 using FlashOWare.Generators.Enumerations;
 using Microsoft.CodeAnalysis;
 
-namespace FlashOWare.Benchmarks.Enumerations;
+namespace FlashOWare.Benchmarks.Generators.Enumerations;
 
 public class GeneratorBenchmarks
 {

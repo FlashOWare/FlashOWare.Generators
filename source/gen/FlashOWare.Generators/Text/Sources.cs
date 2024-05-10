@@ -14,9 +14,12 @@ internal static class Sources
 		namespace System.Runtime.CompilerServices
 		{
 			{{GeneratedCodeAttribute}}
-			[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-			file sealed class InterceptsLocationAttribute(string filePath, int line, int character) : Attribute
+			[global::System.AttributeUsage(global::System.AttributeTargets.Method, AllowMultiple = true)]
+			file sealed class InterceptsLocationAttribute : global::System.Attribute
 			{
+				public InterceptsLocationAttribute(string filePath, int line, int character)
+				{
+				}
 			}
 		}
 		""";

@@ -4,6 +4,13 @@ Prerelease Changelog
 [goto Release_Changelog;](./CHANGELOG.md)
 
 ## [vNext]
+### Generators
+- **Changed** `Enum-Interceptor-Generator`
+  - requires _C# 12.0_ --> _C# 11.0_
+    - emits _regular constructors_ instead of _primary constructors_ for the (experimental) interceptors Attribute
+    - consolidates required language version across all Generators (_C# 11.0_)
+    - aligns with required minimum _.NET 7.0 SDK_, where the _TFM_ `net7.0` uses `11.0` as default `LangVersion`
+
 ### Package
 - **Added** documentation to `README.md`.
 

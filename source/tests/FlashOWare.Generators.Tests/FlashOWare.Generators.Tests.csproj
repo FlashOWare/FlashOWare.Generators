@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\gen\FlashOWare.Generators\FlashOWare.Generators.csproj" />
-    <ProjectReference Include="..\..\lib\FlashOWare.Generators.Attributes\FlashOWare.Generators.Attributes.csproj" />
+    <ProjectReference Include="..\..\lib\FlashOWare.Generators.Attributes\FlashOWare.Generators.Attributes.csproj" SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
 
 </Project>

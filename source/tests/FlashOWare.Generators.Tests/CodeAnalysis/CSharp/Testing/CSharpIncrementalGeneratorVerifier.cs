@@ -15,7 +15,7 @@ internal static class CSharpIncrementalGeneratorVerifier<TIncrementalGenerator>
 		CSharpIncrementalGeneratorTest<TIncrementalGenerator> test = new()
 		{
 			TestCode = source,
-			ReferenceAssemblies = ReferenceAssemblies.Net.Net80,
+			ReferenceAssemblies = ReferenceAssemblies.Net.Net50,
 		};
 
 		test.TestState.AdditionalReferences.Add(Assemblies.Attributes);
@@ -36,7 +36,7 @@ internal static class CSharpIncrementalGeneratorVerifier<TIncrementalGenerator>
 				{
 					(typeof(TIncrementalGenerator), generatedSource.filename, SourceText.From(generatedSource.content, Encoding.UTF8, SourceHashAlgorithm.Sha1)),
 				},
-				ReferenceAssemblies = ReferenceAssemblies.Net.Net80,
+				ReferenceAssemblies = ReferenceAssemblies.Net.Net50,
 			}
 		};
 

@@ -1,6 +1,6 @@
 using FlashOWare.Generators;
 
-namespace FlashOWare.Benchmarks.Enumerations;
+namespace FlashOWare.Benchmarks.Generators.Enumerations;
 
 [GeneratedEnumGetNameAttribute<StringComparison>]
 internal static partial class GeneratedEnum

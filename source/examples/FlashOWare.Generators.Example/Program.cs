@@ -1,4 +1,4 @@
-using FlashOWare.Enumerations;
+using FlashOWare.Generators.Enumerations;
 
 Console.WriteLine("Hello, World!");
 Console.WriteLine();

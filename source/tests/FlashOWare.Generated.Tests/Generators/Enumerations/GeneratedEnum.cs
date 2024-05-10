@@ -1,6 +1,6 @@
 using FlashOWare.Generators;
 
-namespace FlashOWare.Tests.Enumerations;
+namespace FlashOWare.Tests.Generators.Enumerations;
 
 [GeneratedEnumGetNameAttribute<MyEnum>]
 [GeneratedEnumGetNameAttribute<MyFlags>]

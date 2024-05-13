@@ -75,10 +75,10 @@ public sealed class EnumInterceptorGenerator : IIncrementalGenerator
 
 				return null;
 			})
-			.Where(static bool (EnumMethodInvocation? value) => value is not null)
+			.WhereNotNull()
 			.Collect();
 
-		context.RegisterImplementationSourceOutput(source!, static void (SourceProductionContext context, ImmutableArray<EnumMethodInvocation> source) =>
+		context.RegisterImplementationSourceOutput(source, static void (SourceProductionContext context, ImmutableArray<EnumMethodInvocation> source) =>
 		{
 			if (source.IsEmpty)
 			{

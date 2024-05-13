@@ -60,9 +60,9 @@ public sealed class EnumGetNameGenerator : IIncrementalGenerator
 				string? @namespace = symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToDisplayString();
 				return new EnumerationAttributeTarget(@namespace, symbol.Name, methods.DrainToImmutable());
 			})
-			.Where(static bool (EnumerationAttributeTarget? value) => value is not null);
+			.WhereNotNull();
 
-		context.RegisterSourceOutput(source!, static void (SourceProductionContext context, EnumerationAttributeTarget source) =>
+		context.RegisterSourceOutput(source, static void (SourceProductionContext context, EnumerationAttributeTarget source) =>
 		{
 			StringBuilder builder = new();
 			using StringWriter writer = new(builder, CultureInfo.InvariantCulture);

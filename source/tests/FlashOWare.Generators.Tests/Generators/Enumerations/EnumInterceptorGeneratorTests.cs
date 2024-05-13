@@ -134,4 +134,43 @@ public class EnumInterceptorGeneratorTests
 
 		await Verifier.VerifyAsync(code, ("FlashOWare.Generated.EnumInterceptors.g.cs", generated));
 	}
+
+	[Theory]
+	[InlineData("GetName", "Enum.GetName<TEnum>(TEnum)")]
+	[InlineData("IsDefined", "Enum.IsDefined<TEnum>(TEnum)")]
+	public async Task Execute_Error_NoEmit(string method, string signature)
+	{
+		string code = $$"""
+			using System;
+
+			namespace Namespace;
+
+			public class Class
+			{
+				public void Method()
+				{
+					_ = Enum.{|#0:{{method}}|}();
+					_ = {|#1:Enum.{|#2:{{method}}<>|}|}();
+					_ = Enum.{{method}}({|#3:Error|});
+					_ = Enum.{|#4:{{method}}<{|#5:Error|}>|}();
+					_ = Enum.{|#6:{{method}}|}(240);
+					_ = {|#7:Enum.{{method}}<240|}>({|#8:)|};
+				}
+			}
+			""";
+
+		DiagnosticResult[] diagnostics = [
+			Diagnostic.CS1501(0, method, 0),
+			Diagnostic.CS0305(1, method, 1),
+			Diagnostic.CS7036(2, "value", signature),
+			Diagnostic.CS0103(3, "Error"),
+			Diagnostic.CS7036(4, "value", signature),
+			Diagnostic.CS0246(5, "Error"),
+			Diagnostic.CS0315(6, "int", "TEnum", signature, "int", "System.Enum"),
+			Diagnostic.CS0019(7, '<', "method group", "int"),
+			Diagnostic.CS1525(8, ')'),
+		];
+
+		await Verifier.VerifyAsync(code, diagnostics);
+	}
 }

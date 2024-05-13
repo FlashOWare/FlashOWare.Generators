@@ -23,7 +23,7 @@ public sealed class EnumIsDefinedGenerator : IIncrementalGenerator
 				return node is ClassDeclarationSyntax @class
 					&& @class.Modifiers.Any(SyntaxKind.PartialKeyword);
 			},
-			static EnumerationAttributeTarget (GeneratorAttributeSyntaxContext context, CancellationToken cancellationToken) =>
+			static EnumerationAttributeTarget? (GeneratorAttributeSyntaxContext context, CancellationToken cancellationToken) =>
 			{
 				Debug.Assert(context.TargetNode is ClassDeclarationSyntax);
 				Debug.Assert(context.TargetSymbol is INamedTypeSymbol);
@@ -52,11 +52,17 @@ public sealed class EnumIsDefinedGenerator : IIncrementalGenerator
 					methods.Add(method);
 				}
 
-				string? @namespace = symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToDisplayString();
-				return new EnumerationAttributeTarget(@namespace, symbol.Name, methods.MoveToImmutable());
-			});
+				if (methods.Count == 0)
+				{
+					return null;
+				}
 
-		context.RegisterSourceOutput(source, static void (SourceProductionContext context, EnumerationAttributeTarget source) =>
+				string? @namespace = symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToDisplayString();
+				return new EnumerationAttributeTarget(@namespace, symbol.Name, methods.DrainToImmutable());
+			})
+			.Where(static bool (EnumerationAttributeTarget? value) => value is not null);
+
+		context.RegisterSourceOutput(source!, static void (SourceProductionContext context, EnumerationAttributeTarget source) =>
 		{
 			StringBuilder builder = new();
 			using StringWriter writer = new(builder, CultureInfo.InvariantCulture);

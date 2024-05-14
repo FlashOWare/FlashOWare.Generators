@@ -1,6 +1,5 @@
 using System.CodeDom.Compiler;
 using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -141,6 +140,4 @@ public sealed class EnumInterceptorGenerator : IIncrementalGenerator
 
 file sealed record class EnumMethodInvocation(string Name, EnumerationTypeData Enum, InterceptsLocationInfo Location);
 
-file sealed record class InterceptsLocationInfo(string FilePath, int Line, int Character)
-{
-}
+file sealed record class InterceptsLocationInfo(string FilePath, int Line, int Character);

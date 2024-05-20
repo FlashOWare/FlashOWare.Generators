@@ -37,11 +37,11 @@ internal static class DiagnosticResults
 			.WithLocation(markupKey);
 	}
 
-	public static DiagnosticResult CS0305(int markupKey, string group, int arguments)
+	public static DiagnosticResult CS0305(int markupKey, string generic, string group, int arguments)
 	{
 		return new DiagnosticResult("CS0305", DiagnosticSeverity.Error)
-			.WithMessageFormat("Using the generic method group '{0}' requires {1} type arguments")
-			.WithArguments(group, arguments)
+			.WithMessageFormat("Using the generic {0} '{1}' requires {2} type arguments")
+			.WithArguments(generic, group, arguments)
 			.WithLocation(markupKey);
 	}
 
@@ -50,6 +50,13 @@ internal static class DiagnosticResults
 		return new DiagnosticResult("CS0315", DiagnosticSeverity.Error)
 			.WithMessageFormat("The type '{0}' cannot be used as type parameter '{1}' in the generic type or method '{2}'. There is no boxing conversion from '{3}' to '{4}'.")
 			.WithArguments(type, parameter, generic, from, to)
+			.WithLocation(markupKey);
+	}
+
+	public static DiagnosticResult CS1001(int markupKey)
+	{
+		return new DiagnosticResult("CS1001", DiagnosticSeverity.Error)
+			.WithMessage("Identifier expected")
 			.WithLocation(markupKey);
 	}
 

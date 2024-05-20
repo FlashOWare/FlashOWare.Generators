@@ -38,7 +38,7 @@ public sealed class EnumIsDefinedGenerator : IIncrementalGenerator
 					Debug.Assert(attribute.AttributeClass.TypeArguments.Length == 1);
 
 					ITypeSymbol enumeration = attribute.AttributeClass.TypeArguments[0];
-					if (enumeration is IErrorTypeSymbol and not INamedTypeSymbol { EnumUnderlyingType: not null })
+					if (enumeration is IErrorTypeSymbol or not INamedTypeSymbol { EnumUnderlyingType: not null })
 					{
 						continue;
 					}

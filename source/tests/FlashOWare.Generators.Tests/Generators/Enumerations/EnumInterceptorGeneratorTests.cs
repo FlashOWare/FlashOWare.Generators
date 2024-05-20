@@ -161,7 +161,7 @@ public class EnumInterceptorGeneratorTests
 
 		DiagnosticResult[] diagnostics = [
 			Diagnostic.CS1501(0, method, 0),
-			Diagnostic.CS0305(1, method, 1),
+			Diagnostic.CS0305(1, "method group", method, 1),
 			Diagnostic.CS7036(2, "value", signature),
 			Diagnostic.CS0103(3, "Error"),
 			Diagnostic.CS7036(4, "value", signature),

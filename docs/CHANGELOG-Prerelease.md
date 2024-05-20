@@ -14,6 +14,8 @@ Prerelease Changelog
 - **Fixed** _InvalidOperationException_ in `Enum.IsDefined-Generator` when the type argument is of error kind
 - **Fixed** _ArgumentException_ in `Enum.GetName-Generator` when multiple _partial class type declarations_ have a `GeneratedEnumGetNameAttribute`
 - **Fixed** _ArgumentException_ in `Enum.IsDefined-Generator` when multiple _partial class type declarations_ have a `GeneratedEnumIsDefinedAttribute`
+- **Fixed** `Enum.GetName-Generator` generating invalid C# source when type argument is not an enum type
+- **Fixed** `Enum.IsDefined-Generator` generating invalid C# source when type argument is not an enum type
 
 ### Package
 - **Added** documentation to `README.md`.

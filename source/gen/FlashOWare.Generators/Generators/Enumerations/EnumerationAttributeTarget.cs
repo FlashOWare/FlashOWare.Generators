@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FlashOWare.Generators.Enumerations;
 
@@ -31,4 +32,44 @@ internal sealed class EnumerationAttributeTarget(string? @namespace, string name
 	public override bool Equals(object? obj) => Equals(obj as EnumerationAttributeTarget);
 
 	public override int GetHashCode() => throw new UnreachableException();
+
+	public override string ToString() => GetFullName();
+}
+
+internal sealed class EnumerationAttributeTargetEqualityComparer : IEqualityComparer<EnumerationAttributeTarget>
+{
+	public static EnumerationAttributeTargetEqualityComparer FullName { get; } = new EnumerationAttributeTargetEqualityComparer();
+
+	private EnumerationAttributeTargetEqualityComparer()
+	{
+	}
+
+	public bool Equals(EnumerationAttributeTarget? x, EnumerationAttributeTarget? y)
+	{
+		if (ReferenceEquals(x, y))
+		{
+			return true;
+		}
+
+		if (x is not null)
+		{
+			if (y is not null)
+			{
+				return x.Namespace == y.Namespace &&
+					x.Name == y.Name;
+			}
+			return false;
+		}
+
+		return y is null;
+	}
+
+	public int GetHashCode([DisallowNull] EnumerationAttributeTarget obj)
+	{
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+		return HashCode.Combine(obj.Namespace, obj.Name);
+#else
+		return (obj.Namespace, obj.Name).GetHashCode();
+#endif
+	}
 }

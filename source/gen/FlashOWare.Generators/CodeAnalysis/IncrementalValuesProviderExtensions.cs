@@ -1,3 +1,6 @@
+using System.Collections.Immutable;
+using FlashOWare.Collections.Generic;
+
 namespace FlashOWare.CodeAnalysis;
 
 internal static class IncrementalValuesProviderExtensions
@@ -6,15 +9,33 @@ internal static class IncrementalValuesProviderExtensions
 		where TSource : class
 		=> source.Where(static bool (TSource? value) => value is not null)!;
 
-	public static IncrementalValuesProvider<TSource> WhereNotNull<TSource>(this IncrementalValuesProvider<TSource?> source)
-		where TSource : struct
+	public static IncrementalValuesProvider<TSource> Distinct<TSource>(this IncrementalValuesProvider<TSource> source, IEqualityComparer<TSource> comparer)
 	{
 		return source
-			.Where(static bool (TSource? value) => value is not null)
-			.Select(static TSource (TSource? value, CancellationToken _) =>
+			.Collect().WithComparer(ImmutableArrayEqualityComparer<TSource>.Null)
+			.SelectMany(ImmutableArray<TSource> (ImmutableArray<TSource> values, CancellationToken _) =>
 			{
-				Debug.Assert(value.HasValue);
-				return value.Value;
+				if (values.IsEmpty)
+				{
+					return values;
+				}
+
+				ImmutableArray<TSource>.Builder results = ImmutableArray.CreateBuilder<TSource>(values.Length);
+
+#if NETSTANDARD2_1_OR_GREATER || NET472_OR_GREATER || NETCOREAPP2_0_OR_GREATER
+				HashSet<TSource> set = new(values.Length, comparer);
+#else
+				HashSet<TSource> set = new(comparer);
+#endif
+				foreach (TSource value in values)
+				{
+					if (set.Add(value))
+					{
+						results.Add(value);
+					}
+				}
+
+				return results.DrainToImmutable();
 			});
 	}
 }

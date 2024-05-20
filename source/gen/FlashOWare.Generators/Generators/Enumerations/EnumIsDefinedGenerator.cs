@@ -59,7 +59,8 @@ public sealed class EnumIsDefinedGenerator : IIncrementalGenerator
 				string? @namespace = symbol.ContainingNamespace.IsGlobalNamespace ? null : symbol.ContainingNamespace.ToDisplayString();
 				return new EnumerationAttributeTarget(@namespace, symbol.Name, methods.DrainToImmutable());
 			})
-			.WhereNotNull();
+			.WhereNotNull()
+			.Distinct(EnumerationAttributeTargetEqualityComparer.FullName);
 
 		context.RegisterSourceOutput(source, static void (SourceProductionContext context, EnumerationAttributeTarget source) =>
 		{

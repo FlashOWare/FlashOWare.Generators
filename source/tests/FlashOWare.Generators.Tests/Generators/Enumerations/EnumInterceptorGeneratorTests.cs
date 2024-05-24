@@ -5,7 +5,7 @@ namespace FlashOWare.Tests.Generators.Enumerations;
 public class EnumInterceptorGeneratorTests
 {
 	[Fact]
-	public async Task Execute_NoAttributes_NoEmit()
+	public async Task Execute_NoInvocations_NoEmit()
 	{
 		string code = """
 			using System;
@@ -26,7 +26,7 @@ public class EnumInterceptorGeneratorTests
 	}
 
 	[Fact]
-	public async Task Execute_WithAttributes_AddSource()
+	public async Task Execute_WithInvocations_AddSource()
 	{
 		string code = """
 			using System;

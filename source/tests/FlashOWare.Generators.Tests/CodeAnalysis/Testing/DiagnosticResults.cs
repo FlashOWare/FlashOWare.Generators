@@ -53,6 +53,14 @@ internal static class DiagnosticResults
 			.WithLocation(markupKey);
 	}
 
+	public static DiagnosticResult CS0592(int markupKey, string attribute, params string[] declarations)
+	{
+		return new DiagnosticResult("CS0592", DiagnosticSeverity.Error)
+			.WithMessageFormat("Attribute '{0}' is not valid on this declaration type. It is only valid on '{1}' declarations.")
+			.WithArguments(attribute, String.Join(", ", declarations))
+			.WithLocation(markupKey);
+	}
+
 	public static DiagnosticResult CS1001(int markupKey)
 	{
 		return new DiagnosticResult("CS1001", DiagnosticSeverity.Error)

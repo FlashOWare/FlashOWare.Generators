@@ -91,6 +91,14 @@ internal static class DiagnosticResults
 			.WithLocation(markupKey);
 	}
 
+	public static DiagnosticResult CS1503(int markupKey, string from, string to)
+	{
+		return new DiagnosticResult("CS1503", DiagnosticSeverity.Error)
+			.WithMessageFormat("Argument 1: cannot convert from '{0}' to '{1}'")
+			.WithArguments(from, to)
+			.WithLocation(markupKey);
+	}
+
 	public static DiagnosticResult CS1525(int markupKey, char term)
 	{
 		return new DiagnosticResult("CS1525", DiagnosticSeverity.Error)

@@ -88,6 +88,8 @@ internal static class CSharpIncrementalGeneratorVerifier<TIncrementalGenerator>
 		test.TestState.AdditionalReferences.Add(Assemblies.Attributes);
 
 		test.ExpectedDiagnostics.AddRange(diagnostics);
+
+		test.NullableContextOptions = NullableContextOptions.Enable;
 		test.LanguageVersion = LanguageVersion.CSharp11;
 
 		return test.RunAsync(CancellationToken.None);

@@ -18,7 +18,16 @@ public class EnumInterceptorGeneratorTests
 				{
 					_ = Enum.GetName(typeof(DateTimeKind), DateTimeKind.Utc);
 					_ = Enum.IsDefined(typeof(DateTimeKind), DateTimeKind.Utc);
+
+					_ = GetName<StringSplitOptions>(StringSplitOptions.RemoveEmptyEntries);
+					_ = IsDefined<StringSplitOptions>(StringSplitOptions.RemoveEmptyEntries);
 				}
+
+				private static string? GetName<TEnum>(TEnum value) where TEnum : struct, Enum
+					=> Enum.GetName<TEnum>(value);
+
+				private static bool IsDefined<TEnum>(TEnum value) where TEnum : struct, Enum
+					=> Enum.IsDefined<TEnum>(value);
 			}
 			""";
 
@@ -38,7 +47,9 @@ public class EnumInterceptorGeneratorTests
 				public void Method()
 				{
 					_ = Enum.GetName(DateTimeKind.Utc);
+					_ = Enum.GetName<StringSplitOptions>(StringSplitOptions.RemoveEmptyEntries);
 					_ = Enum.IsDefined(DateTimeKind.Utc);
+					_ = Enum.IsDefined<StringSplitOptions>(StringSplitOptions.RemoveEmptyEntries);
 				}
 			}
 			""";
@@ -66,12 +77,31 @@ public class EnumInterceptorGeneratorTests
 						};
 					}
 					[InterceptsLocation(@"/0/Test0.cs", 10, 12)]
+					internal static string? GetName1(global::System.StringSplitOptions value)
+					{
+						return value switch
+						{
+							global::System.StringSplitOptions.None => nameof(global::System.StringSplitOptions.None),
+							global::System.StringSplitOptions.RemoveEmptyEntries => nameof(global::System.StringSplitOptions.RemoveEmptyEntries),
+							global::System.StringSplitOptions.TrimEntries => nameof(global::System.StringSplitOptions.TrimEntries),
+							_ => null,
+						};
+					}
+					[InterceptsLocation(@"/0/Test0.cs", 11, 12)]
 					internal static bool IsDefined0(global::System.DateTimeKind value)
 					{
 						return value is
 							global::System.DateTimeKind.Unspecified or
 							global::System.DateTimeKind.Utc or
 							global::System.DateTimeKind.Local;
+					}
+					[InterceptsLocation(@"/0/Test0.cs", 12, 12)]
+					internal static bool IsDefined1(global::System.StringSplitOptions value)
+					{
+						return value is
+							global::System.StringSplitOptions.None or
+							global::System.StringSplitOptions.RemoveEmptyEntries or
+							global::System.StringSplitOptions.TrimEntries;
 					}
 				}
 			}
@@ -155,6 +185,7 @@ public class EnumInterceptorGeneratorTests
 					_ = Enum.{|#4:{{method}}<{|#5:Error|}>|}();
 					_ = Enum.{|#6:{{method}}|}(240);
 					_ = {|#7:Enum.{{method}}<240|}>({|#8:)|};
+					_ = Enum.{{method}}<DayOfWeek>({|#9:6|});
 				}
 			}
 			""";
@@ -169,6 +200,7 @@ public class EnumInterceptorGeneratorTests
 			Diagnostic.CS0315(6, "int", "TEnum", signature, "int", "System.Enum"),
 			Diagnostic.CS0019(7, '<', "method group", "int"),
 			Diagnostic.CS1525(8, ')'),
+			Diagnostic.CS1503(9, "int", "System.DayOfWeek"),
 		];
 
 		await Verifier.VerifyAsync(code, diagnostics);

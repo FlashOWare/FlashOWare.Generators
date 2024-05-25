@@ -5,6 +5,8 @@ Prerelease Changelog
 
 ## [vNext]
 ### Generators
+- **Changed** `Enum.GetName-Generator` suppressing duplicate method declarations
+- **Changed** `Enum.IsDefined-Generator` suppressing duplicate method declarations
 - **Changed** `Enum-Interceptor-Generator` requirement from _C# 12.0_ to _C# 11.0_
   - emit a _regular constructor_ instead of a _primary constructor_ for the (experimental) Interceptors Attribute
   - consolidate required language version across all Generators (_C# 11.0_)

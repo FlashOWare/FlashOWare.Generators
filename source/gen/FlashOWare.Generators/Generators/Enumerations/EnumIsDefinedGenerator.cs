@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 using FlashOWare.Attributes;
-using FlashOWare.CodeAnalysis;
 using FlashOWare.Text;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -31,8 +30,10 @@ public sealed class EnumIsDefinedGenerator : IIncrementalGenerator
 				var node = Unsafe.As<ClassDeclarationSyntax>(context.TargetNode);
 				var symbol = Unsafe.As<INamedTypeSymbol>(context.TargetSymbol);
 
+				var attributes = symbol.GetAttributes().Intersect(context.Attributes, ReferenceEqualityComparer<AttributeData>.Instance);
+
 				var methods = ImmutableArray.CreateBuilder<EnumerationTypeData>(context.Attributes.Length);
-				foreach (AttributeData attribute in context.Attributes)
+				foreach (AttributeData attribute in attributes)
 				{
 					Debug.Assert(attribute.AttributeClass is not null);
 					Debug.Assert(attribute.AttributeClass.TypeArguments.Length == 1);
@@ -51,6 +52,7 @@ public sealed class EnumIsDefinedGenerator : IIncrementalGenerator
 					methods.Add(method);
 				}
 
+				Debug.Assert(methods.Capacity <= context.Attributes.Length, $"Unexpected capacity growth from {context.Attributes.Length} to {methods.Capacity}.");
 				if (methods.Count == 0)
 				{
 					return null;
@@ -60,6 +62,9 @@ public sealed class EnumIsDefinedGenerator : IIncrementalGenerator
 				return new EnumerationAttributeTarget(@namespace, symbol.Name, methods.DrainToImmutable());
 			})
 			.WhereNotNull()
+			.GroupBy(static (EnumerationAttributeTarget element) => (element.Namespace, element.Name),
+				static (EnumerationAttributeTarget element) => element.Methods,
+				static (key, elements) => new EnumerationAttributeTarget(key.Namespace, key.Name, elements.SelectMany(static elements => elements).Distinct(EnumerationTypeDataEqualityComparer.Name).ToImmutableArray()))
 			.Distinct(EnumerationAttributeTargetEqualityComparer.FullName);
 
 		context.RegisterSourceOutput(source, static void (SourceProductionContext context, EnumerationAttributeTarget source) =>

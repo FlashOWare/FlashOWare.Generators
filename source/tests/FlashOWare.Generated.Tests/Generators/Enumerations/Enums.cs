@@ -19,6 +19,4 @@ internal enum MyFlags
 	Fourth = 4,
 }
 
-internal enum MyEmpty
-{
-}
+internal enum MyEmpty;

@@ -31,7 +31,7 @@ Commands the [System.Enum.IsDefined Generator](../gen/System.Enum.IsDefined-Gene
 ## Remarks
 The _class_ this attribute is applied to:
 - Must be a `partial` _class_.
-- Must be a top_level _class_ (not a nested type).
+- Must be a top-level _class_ (not a nested type).
 - Must not be generic.
 - Must not be a file-local type.
 
@@ -50,14 +50,12 @@ _ = GeneratedEnum.IsDefined(AttributeTargets.Struct | AttributeTargets.Enum); //
 [GeneratedEnumIsDefinedAttribute<ConsoleKey>]
 [GeneratedEnumIsDefinedAttribute<TypeCode>]
 [GeneratedEnumIsDefinedAttribute<AttributeTargets>]
-internal static partial class GeneratedEnum
-{
-}
+internal static partial class GeneratedEnum;
 ```
 
 ## See also
 - [Attribute Class](https://learn.microsoft.com/dotnet/api/system.attribute)
-- [System.Enum.GetName<TEnum>(TEnum)](https://learn.microsoft.com/dotnet/api/system.enum.getname)
+- [System.Enum.IsDefined<TEnum>(TEnum)](https://learn.microsoft.com/dotnet/api/system.enum.isdefined)
 
 ## History
 - [vNext](../CHANGELOG.md#vNext)

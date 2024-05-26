@@ -53,6 +53,14 @@ internal static class DiagnosticResults
 			.WithLocation(markupKey);
 	}
 
+	public static DiagnosticResult CS0411(int markupKey, string method)
+	{
+		return new DiagnosticResult("CS0411", DiagnosticSeverity.Error)
+			.WithMessageFormat("The type arguments for method '{0}' cannot be inferred from the usage. Try specifying the type arguments explicitly.")
+			.WithArguments(method)
+			.WithLocation(markupKey);
+	}
+
 	public static DiagnosticResult CS0592(int markupKey, string attribute, params string[] declarations)
 	{
 		return new DiagnosticResult("CS0592", DiagnosticSeverity.Error)

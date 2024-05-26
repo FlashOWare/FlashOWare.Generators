@@ -35,6 +35,7 @@ public class EnumIsDefinedGeneratorTests
 			namespace Namespace;
 
 			[GeneratedEnumIsDefinedAttribute<StringComparison>]
+			//[GeneratedEnumIsDefinedAttribute<AttributeTargets>]
 			public static partial class Class
 			{
 			}
@@ -377,14 +378,15 @@ public class EnumIsDefinedGeneratorTests
 
 			[GeneratedEnumIsDefinedAttribute<EventResetMode>]
 			[GeneratedEnumIsDefinedAttribute<{|#0:?|}>]
+			[GeneratedEnumIsDefinedAttribute<{|#1:int|}>]
 			public static partial class Class
 			{
 			}
 
-			[{|#1:GeneratedEnumIsDefinedAttribute<EventResetMode, EventResetMode>|}]
-			[{|#2:GeneratedEnumIsDefinedAttribute<,>|}]
-			[{|#3:GeneratedEnumIsDefinedAttribute|#3}{|#4:>|#4}]
-			[{|#5:GeneratedEnumIsDefinedAttribute|}]
+			[{|#2:GeneratedEnumIsDefinedAttribute<EventResetMode, EventResetMode>|}]
+			[{|#3:GeneratedEnumIsDefinedAttribute<,>|}]
+			[{|#4:GeneratedEnumIsDefinedAttribute|#4}{|#5:>|#5}]
+			[{|#6:GeneratedEnumIsDefinedAttribute|}]
 			public static partial class Class
 			{
 			}
@@ -392,11 +394,12 @@ public class EnumIsDefinedGeneratorTests
 
 		DiagnosticResult[] diagnostics = [
 			Diagnostic.CS1031(0),
-			Diagnostic.CS0305(1, "type", "GeneratedEnumIsDefinedAttribute<TEnum>", 1),
+			Diagnostic.CS0315(1, "int", "TEnum", "GeneratedEnumIsDefinedAttribute<TEnum>", "int", "System.Enum"),
 			Diagnostic.CS0305(2, "type", "GeneratedEnumIsDefinedAttribute<TEnum>", 1),
 			Diagnostic.CS0305(3, "type", "GeneratedEnumIsDefinedAttribute<TEnum>", 1),
-			Diagnostic.CS1001(4),
-			Diagnostic.CS0305(5, "type", "GeneratedEnumIsDefinedAttribute<TEnum>", 1),
+			Diagnostic.CS0305(4, "type", "GeneratedEnumIsDefinedAttribute<TEnum>", 1),
+			Diagnostic.CS1001(5),
+			Diagnostic.CS0305(6, "type", "GeneratedEnumIsDefinedAttribute<TEnum>", 1),
 		];
 
 		string generated = $$"""

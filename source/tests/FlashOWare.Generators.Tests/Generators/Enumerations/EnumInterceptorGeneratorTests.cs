@@ -186,6 +186,9 @@ public class EnumInterceptorGeneratorTests
 					_ = Enum.{|#6:{{method}}|}(240);
 					_ = {|#7:Enum.{{method}}<240|}>({|#8:)|};
 					_ = Enum.{{method}}<DayOfWeek>({|#9:6|});
+
+					_ = Enum.{|#10:{{method}}|}(default);
+					_ = Enum.{|#11:{{method}}<int>|}(default);
 				}
 			}
 			""";
@@ -201,6 +204,9 @@ public class EnumInterceptorGeneratorTests
 			Diagnostic.CS0019(7, '<', "method group", "int"),
 			Diagnostic.CS1525(8, ')'),
 			Diagnostic.CS1503(9, "int", "System.DayOfWeek"),
+
+			Diagnostic.CS0411(10, signature),
+			Diagnostic.CS0315(11, "int", "TEnum", signature, "int", "System.Enum"),
 		];
 
 		await Verifier.VerifyAsync(code, diagnostics);

@@ -1,6 +1,6 @@
 namespace FlashOWare.Collections.Generic;
 
-public sealed class ReferenceEqualityComparer<T> : IEqualityComparer<T>
+internal sealed class ReferenceEqualityComparer<T> : IEqualityComparer<T>
 	where T : class?
 {
 	public static ReferenceEqualityComparer<T> Instance { get; } = new ReferenceEqualityComparer<T>();

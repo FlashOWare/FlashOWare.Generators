@@ -14,8 +14,8 @@ Prerelease Changelog
 - **Changed** `Enum-Interceptor-Generator` to suppress adding the generated document when no target Enum-Method-Invocations are found
 - **Fixed** _InvalidOperationException_ in `Enum.GetName-Generator` when the type argument of `GeneratedEnumGetNameAttribute` is of _error_ kind
 - **Fixed** _InvalidOperationException_ in `Enum.IsDefined-Generator` when the type argument of `GeneratedEnumIsDefinedAttribute` is of _error_ kind
-- **Fixed** _ArgumentException_ in `Enum.GetName-Generator` when multiple _partial class type declarations_ have a `GeneratedEnumGetNameAttribute`
-- **Fixed** _ArgumentException_ in `Enum.IsDefined-Generator` when multiple _partial class type declarations_ have a `GeneratedEnumIsDefinedAttribute`
+- **Fixed** _ArgumentException_ in `Enum.GetName-Generator` when multiple _partial class type declarations_ have at least one `GeneratedEnumGetNameAttribute`
+- **Fixed** _ArgumentException_ in `Enum.IsDefined-Generator` when multiple _partial class type declarations_ have at least one `GeneratedEnumIsDefinedAttribute`
 - **Fixed** `Enum.GetName-Generator` generating invalid C# source when the type argument of `GeneratedEnumGetNameAttribute` is not an _enum_ type
 - **Fixed** `Enum.IsDefined-Generator` generating invalid C# source when the type argument of `GeneratedEnumIsDefinedAttribute` is not an _enum_ type
 

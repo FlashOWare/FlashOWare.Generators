@@ -5,7 +5,20 @@ Prerelease Changelog
 
 ## [vNext]
 ### Generators
+- **Changed** `Enum.GetName-Generator` suppressing duplicate method declarations when another `GeneratedEnumGetNameAttribute` has the same _enum_ type argument
+- **Changed** `Enum.IsDefined-Generator` suppressing duplicate method declarations when another `GeneratedEnumIsDefinedAttribute` has the same _enum_ type argument
+- **Changed** `Enum-Interceptor-Generator` requirement from _C# 12.0_ to _C# 11.0_
+  - emit a _regular constructor_ instead of a _primary constructor_ for the (experimental) Interceptors Attribute
+  - consolidate required language version across all Generators (_C# 11.0_)
+  - align with required minimum _.NET 7.0 SDK_, where the _TFM_ `net7.0` uses `11.0` as default `LangVersion`
+- **Changed** `Enum-Interceptor-Generator` to suppress adding the generated document when no target Enum-Method-Invocations are found
 - **Changed** `Enum-Interceptor-Generator` to emit each `System.Enum` specialization only once, but with one or more Interceptor-Attributes instead.
+- **Fixed** _InvalidOperationException_ in `Enum.GetName-Generator` when the type argument of `GeneratedEnumGetNameAttribute` is of _error_ kind
+- **Fixed** _InvalidOperationException_ in `Enum.IsDefined-Generator` when the type argument of `GeneratedEnumIsDefinedAttribute` is of _error_ kind
+- **Fixed** _ArgumentException_ in `Enum.GetName-Generator` when multiple _partial class type declarations_ have at least one `GeneratedEnumGetNameAttribute`
+- **Fixed** _ArgumentException_ in `Enum.IsDefined-Generator` when multiple _partial class type declarations_ have at least one `GeneratedEnumIsDefinedAttribute`
+- **Fixed** `Enum.GetName-Generator` generating invalid C# source when the type argument of `GeneratedEnumGetNameAttribute` is not an _enum_ type
+- **Fixed** `Enum.IsDefined-Generator` generating invalid C# source when the type argument of `GeneratedEnumIsDefinedAttribute` is not an _enum_ type
 
 ### Package
 - **Added** documentation to `README.md`.

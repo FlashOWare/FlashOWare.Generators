@@ -1,4 +1,4 @@
-namespace FlashOWare.Tests.Enumerations;
+namespace FlashOWare.Tests.Generators.Enumerations;
 
 internal enum MyEnum
 {
@@ -19,6 +19,4 @@ internal enum MyFlags
 	Fourth = 4,
 }
 
-internal enum MyEmpty
-{
-}
+internal enum MyEmpty;

@@ -1,9 +1,15 @@
-namespace FlashOWare.Benchmarks.Enumerations;
+namespace FlashOWare.Benchmarks.Generators.Enumerations;
 
 [ShortRunJob]
 [MemoryDiagnoser(false)]
 public class EnumGetNameBenchmarks
 {
+	[Benchmark]
+	public string Enum_ToString()
+	{
+		return StringComparison.OrdinalIgnoreCase.ToString();
+	}
+
 	[Benchmark]
 	public string? Enum_GetName()
 	{

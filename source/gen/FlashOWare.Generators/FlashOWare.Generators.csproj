@@ -22,7 +22,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PolySharpIncludeGeneratedTypes>System.Index;System.Diagnostics.CodeAnalysis.NotNullWhenAttribute;System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute;System.Runtime.CompilerServices.IsExternalInit</PolySharpIncludeGeneratedTypes>
+    <PolySharpIncludeGeneratedTypes>
+      System.Diagnostics.CodeAnalysis.DisallowNullAttribute;
+      System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute;
+      System.Diagnostics.CodeAnalysis.NotNullWhenAttribute;
+      System.Index;
+      System.Runtime.CompilerServices.IsExternalInit;
+    </PolySharpIncludeGeneratedTypes>
   </PropertyGroup>
 
   <ItemGroup>

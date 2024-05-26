@@ -4,8 +4,8 @@ Generator: [EnumInterceptorGenerator.cs](../../source/gen/FlashOWare.Generators/
 |                  |                                              |
 |------------------|----------------------------------------------|
 | HintName         | `FlashOWare.Generated.EnumInterceptors.g.cs` |
-| Language         | C# 12.0 or greater                           |
-| Target Framework | .NET Standard 1.0 or compatible              |
+| Language         | C# 11.0 or greater                           |
+| Target Framework | .NET 5.0 or compatible                       |
 | Dependencies     | _none_                                       |
 | Applies to       | `[1.0.0,)`                                   |
 

@@ -6,21 +6,29 @@
     <RootNamespace>FlashOWare.Tests</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PolySharpIncludeGeneratedTypes>System.Diagnostics.CodeAnalysis.NotNullWhenAttribute;System.Runtime.CompilerServices.IsExternalInit</PolySharpIncludeGeneratedTypes>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="xunit" Version="2.6.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" PrivateAssets="all" />
+    <PackageReference Include="coverlet.collector" Version="6.0.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.0" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.SourceGenerators.Testing.XUnit" Version="1.1.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.SourceGenerators.Testing.XUnit" Version="1.1.2-beta1.24169.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PolySharp" Version="1.13.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\gen\FlashOWare.Generators\FlashOWare.Generators.csproj" />
-    <ProjectReference Include="..\..\lib\FlashOWare.Generators.Attributes\FlashOWare.Generators.Attributes.csproj" />
+    <ProjectReference Include="..\..\lib\FlashOWare.Generators.Attributes\FlashOWare.Generators.Attributes.csproj" SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
 
 </Project>

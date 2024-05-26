@@ -1,4 +1,4 @@
-namespace FlashOWare.Benchmarks.Enumerations;
+namespace FlashOWare.Benchmarks.Generators.Enumerations;
 
 [ShortRunJob]
 [MemoryDiagnoser(false)]

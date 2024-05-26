@@ -31,7 +31,7 @@ Commands the [System.Enum.GetName Generator](../gen/System.Enum.GetName-Generato
 ## Remarks
 The _class_ this attribute is applied to:
 - Must be a `partial` _class_.
-- Must be a top_level _class_ (not a nested type).
+- Must be a top-level _class_ (not a nested type).
 - Must not be generic.
 - Must not be a file-local type.
 
@@ -50,9 +50,7 @@ _ = GeneratedEnum.GetName(AttributeTargets.Struct | AttributeTargets.Enum); //<n
 [GeneratedEnumGetName<ConsoleKey>]
 [GeneratedEnumGetName<TypeCode>]
 [GeneratedEnumGetName<AttributeTargets>]
-internal static partial class GeneratedEnum
-{
-}
+internal static partial class GeneratedEnum;
 ```
 
 ## See also

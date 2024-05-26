@@ -1,4 +1,4 @@
-namespace FlashOWare.Enumerations;
+namespace FlashOWare.Generators.Enumerations;
 
 internal static class EnumerationExamples
 {

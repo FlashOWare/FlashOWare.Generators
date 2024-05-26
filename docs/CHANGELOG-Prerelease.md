@@ -11,7 +11,7 @@ Prerelease Changelog
   - emit a _regular constructor_ instead of a _primary constructor_ for the (experimental) Interceptors Attribute
   - consolidate required language version across all Generators (_C# 11.0_)
   - align with required minimum _.NET 7.0 SDK_, where the _TFM_ `net7.0` uses `11.0` as default `LangVersion`
-- **Changed** `Enum-Interceptor-Generator`to suppress adding the generated document when no target Enum-Method-Invocations are found
+- **Changed** `Enum-Interceptor-Generator` to suppress adding the generated document when no target Enum-Method-Invocations are found
 - **Fixed** _InvalidOperationException_ in `Enum.GetName-Generator` when the type argument is of error kind
 - **Fixed** _InvalidOperationException_ in `Enum.IsDefined-Generator` when the type argument is of error kind
 - **Fixed** _ArgumentException_ in `Enum.GetName-Generator` when multiple _partial class type declarations_ have a `GeneratedEnumGetNameAttribute`

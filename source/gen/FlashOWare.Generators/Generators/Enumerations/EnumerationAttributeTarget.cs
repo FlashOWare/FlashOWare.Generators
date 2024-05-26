@@ -1,6 +1,3 @@
-using System.Collections.Immutable;
-using System.Diagnostics.CodeAnalysis;
-
 namespace FlashOWare.Generators.Enumerations;
 
 internal sealed class EnumerationAttributeTarget(string? @namespace, string name, ImmutableArray<EnumerationTypeData> methods) : IEquatable<EnumerationAttributeTarget>

@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-
 namespace FlashOWare.Collections.Generic;
 
 public sealed class ReferenceEqualityComparer<T> : IEqualityComparer<T>

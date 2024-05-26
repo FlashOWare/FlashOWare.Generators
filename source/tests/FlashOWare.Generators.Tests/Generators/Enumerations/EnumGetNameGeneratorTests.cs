@@ -100,7 +100,7 @@ public class EnumGetNameGeneratorTests
 			public partial class NotStatic
 			{
 			}
-			
+
 			[{|#0:GeneratedEnumGetNameAttribute<DateTimeKind>|}]
 			public partial struct ValueType
 			{

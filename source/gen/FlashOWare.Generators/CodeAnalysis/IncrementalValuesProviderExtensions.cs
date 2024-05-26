@@ -1,5 +1,3 @@
-using System.Collections.Immutable;
-
 namespace FlashOWare.CodeAnalysis;
 
 internal static class IncrementalValuesProviderExtensions

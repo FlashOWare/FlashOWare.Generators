@@ -1,5 +1,3 @@
-using System.Collections.Immutable;
-
 namespace FlashOWare.Collections.Generic;
 
 internal sealed class ImmutableArrayEqualityComparer<T> : IEqualityComparer<ImmutableArray<T>>

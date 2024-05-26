@@ -34,9 +34,7 @@ _ = GeneratedEnum.IsDefined(AttributeTargets.Struct | AttributeTargets.Enum); //
 [GeneratedEnumIsDefinedAttribute<ConsoleKey>]
 [GeneratedEnumIsDefinedAttribute<TypeCode>]
 [GeneratedEnumIsDefinedAttribute<AttributeTargets>]
-internal static partial class GeneratedEnum
-{
-}
+internal static partial class GeneratedEnum;
 ```
 
 ## See also

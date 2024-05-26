@@ -29,6 +29,7 @@ internal sealed class CSharpIncrementalGeneratorTest<TIncrementalGenerator> : CS
 	}
 
 	public bool? CheckOverflow { get; set; }
+	public NullableContextOptions NullableContextOptions { get; set; }
 	public LanguageVersion LanguageVersion { get; set; } = LanguageVersion.Default;
 
 	protected override CompilationOptions CreateCompilationOptions()
@@ -38,6 +39,11 @@ internal sealed class CSharpIncrementalGeneratorTest<TIncrementalGenerator> : CS
 		if (CheckOverflow.HasValue)
 		{
 			compilationOptions = compilationOptions.WithOverflowChecks(CheckOverflow.Value);
+		}
+
+		if (NullableContextOptions != compilationOptions.NullableContextOptions)
+		{
+			compilationOptions = compilationOptions.WithNullableContextOptions(NullableContextOptions);
 		}
 
 		return compilationOptions;

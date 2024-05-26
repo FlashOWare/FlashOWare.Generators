@@ -5,6 +5,12 @@ namespace FlashOWare.Benchmarks.Generators.Enumerations;
 public class EnumGetNameBenchmarks
 {
 	[Benchmark]
+	public string Enum_ToString()
+	{
+		return StringComparison.OrdinalIgnoreCase.ToString();
+	}
+
+	[Benchmark]
 	public string? Enum_GetName()
 	{
 		return SystemEnum.GetName(StringComparison.OrdinalIgnoreCase);

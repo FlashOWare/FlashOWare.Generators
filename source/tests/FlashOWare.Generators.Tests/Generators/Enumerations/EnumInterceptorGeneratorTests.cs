@@ -107,6 +107,8 @@ public class EnumInterceptorGeneratorTests
 					_ = Enum.IsDefined(default(Enum2));
 					_ = Alias.GetName(UriKind.Absolute);
 					_ = Alias.IsDefined(UriFormat.Unescaped);
+					_ = GetName(UriKind.Absolute);
+					_ = IsDefined(UriFormat.Unescaped);
 					_ = Enum.GetName((UriKind)0);
 					_ = Enum.IsDefined((UriFormat)0);
 					_ = global::System.Enum.GetName(global::System.UriKind.Absolute);
@@ -171,8 +173,9 @@ public class EnumInterceptorGeneratorTests
 					[InterceptsLocation(@"/0/Test1.cs", 26, 12)]
 					[InterceptsLocation(@"/0/Test1.cs", 28, 12)]
 					[InterceptsLocation(@"/0/Test1.cs", 30, 13)]
-					[InterceptsLocation(@"/0/Test1.cs", 32, 12)]
-					[InterceptsLocation(@"/0/Test1.cs", 34, 27)]
+					[InterceptsLocation(@"/0/Test1.cs", 32, 07)]
+					[InterceptsLocation(@"/0/Test1.cs", 34, 12)]
+					[InterceptsLocation(@"/0/Test1.cs", 36, 27)]
 					internal static string? GetName(global::System.UriKind value)
 					{
 						return value switch
@@ -189,8 +192,9 @@ public class EnumInterceptorGeneratorTests
 					[InterceptsLocation(@"/0/Test1.cs", 27, 12)]
 					[InterceptsLocation(@"/0/Test1.cs", 29, 12)]
 					[InterceptsLocation(@"/0/Test1.cs", 31, 13)]
-					[InterceptsLocation(@"/0/Test1.cs", 33, 12)]
-					[InterceptsLocation(@"/0/Test1.cs", 35, 27)]
+					[InterceptsLocation(@"/0/Test1.cs", 33, 07)]
+					[InterceptsLocation(@"/0/Test1.cs", 35, 12)]
+					[InterceptsLocation(@"/0/Test1.cs", 37, 27)]
 					internal static bool IsDefined(global::System.UriFormat value)
 					{
 						return value is

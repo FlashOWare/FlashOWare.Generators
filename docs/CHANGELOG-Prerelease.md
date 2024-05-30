@@ -19,6 +19,7 @@ Prerelease Changelog
 - **Fixed** _ArgumentException_ in `Enum.IsDefined-Generator` when multiple _partial class type declarations_ have at least one `GeneratedEnumIsDefinedAttribute`.
 - **Fixed** `Enum.GetName-Generator` generating invalid C# source when the type argument of `GeneratedEnumGetNameAttribute` is not an _enum_ type.
 - **Fixed** `Enum.IsDefined-Generator` generating invalid C# source when the type argument of `GeneratedEnumIsDefinedAttribute` is not an _enum_ type.
+- **Fixed** `Enum-Interceptor-Generator` not including _invocation expressions_ targeting the _Enum_ methods when a `using static` directive (C# 6) imports these static members.
 
 ### Package
 - **Added** documentation to `README.md`.

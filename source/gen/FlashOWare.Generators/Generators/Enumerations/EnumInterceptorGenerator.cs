@@ -5,6 +5,8 @@ using System.Text;
 using FlashOWare.Text;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
+using EnumInvocationGroup = (string MethodName, string EnumName);
+
 namespace FlashOWare.Generators.Enumerations;
 
 [Generator(LanguageNames.CSharp)]
@@ -13,7 +15,7 @@ public sealed class EnumInterceptorGenerator : IIncrementalGenerator
 	public void Initialize(IncrementalGeneratorInitializationContext context)
 	{
 		var source = context.SyntaxProvider.CreateSyntaxProvider(
-			static bool (SyntaxNode node, CancellationToken CancellationToken) =>
+			static bool (SyntaxNode node, CancellationToken cancellationToken) =>
 			{
 				return node is InvocationExpressionSyntax invocation
 					&& invocation.Expression is MemberAccessExpressionSyntax
@@ -102,26 +104,27 @@ public sealed class EnumInterceptorGenerator : IIncrementalGenerator
 			document.WriteLine('{');
 			document.Indent++;
 
-			IEnumerable<IGrouping<string, EnumMethodInvocation>> group = source.GroupBy(static value => value.Name);
+			IEnumerable<IGrouping<EnumInvocationGroup, EnumMethodInvocation>> groups =
+				source.GroupBy(static value => new EnumInvocationGroup(value.Name, value.Enum.Name));
 
-			foreach (var invocations in group)
+			foreach (IGrouping<EnumInvocationGroup, EnumMethodInvocation> invocations in groups)
 			{
-				int index = 0;
-
-				foreach (var invocation in invocations)
+				IEnumerable<InterceptsLocationInfo> locations = invocations.Select(static invocation => invocation.Location);
+				foreach (InterceptsLocationInfo location in locations)
 				{
-					document.WriteLine($"""[InterceptsLocation(@"{invocation.Location.FilePath}", {invocation.Location.Line}, {invocation.Location.Character})]""");
+					document.WriteLine($"""[InterceptsLocation(@"{location.FilePath}", {location.Line}, {location.Character})]""");
+				}
 
-					if (invocation.Name == Methods.GetName)
-					{
-						document.WriteLine($"internal static string? {Methods.GetName}{index++}({invocation.Enum.Name} value)");
-						EnumerationWriter.WriteGetNameMethodBody(document, invocation.Enum);
-					}
-					else if (invocation.Name == Methods.IsDefined)
-					{
-						document.WriteLine($"internal static bool {Methods.IsDefined}{index++}({invocation.Enum.Name} value)");
-						EnumerationWriter.WriteIsDefinedMethodBody(document, invocation.Enum);
-					}
+				EnumMethodInvocation invocation = invocations.First();
+				if (invocation.Name == Methods.GetName)
+				{
+					document.WriteLine($"internal static string? {Methods.GetName}({invocation.Enum.Name} value)");
+					EnumerationWriter.WriteGetNameMethodBody(document, invocation.Enum);
+				}
+				else if (invocation.Name == Methods.IsDefined)
+				{
+					document.WriteLine($"internal static bool {Methods.IsDefined}({invocation.Enum.Name} value)");
+					EnumerationWriter.WriteIsDefinedMethodBody(document, invocation.Enum);
 				}
 			}
 

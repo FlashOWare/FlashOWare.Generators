@@ -1,0 +1,8 @@
+  stryker-config:
+    solution: '../FlashOWare.Generators.sln'
+    project: 'FlashOWare.Generators/FlashOWare.Generators.csproj'
+    test-projects:
+      - '../tests/FlashOWare.Generated.Tests/FlashOWare.Generated.Tests.csproj'
+      - '../tests/FlashOWare.Generators.Tests/FlashOWare.Generators.Tests.csproj'
+    reporters:
+      - 'markdown'
